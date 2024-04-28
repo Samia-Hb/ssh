@@ -6,34 +6,11 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:02:45 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/27 22:45:32 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 18:13:25 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_type(char **tab)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (tab[i])
-	{
-		j = 0;
-		while (j < ft_strlen(tab[i]))
-		{
-			if (tab[i][j] < 48 || tab[i][j] > 57)
-			{
-				if (tab[i][0] != '-' && tab[i][0] != '+')
-					return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 int	check_duplicate(long *arr, int argc, char **argv)
 {
@@ -72,17 +49,16 @@ int	while_boucle(char **argv, int *i, long **arr, int *j)
 	if (!check_type(tab))
 	{
 		free(*arr);
-		free(tab);
+		free_tab(tab);
 		return (0);
 	}
 	k = 0;
 	while (tab[k])
 	{
 		(*arr)[(*j)++] = ft_atoi(tab[k]);
-		free(tab[k]);
 		k++;
 	}
-	free(tab);
+	free_tab(tab);
 	return (1);
 }
 
@@ -99,11 +75,11 @@ long	*check_arguments(int argc, char **argv)
 		return (0);
 	while (i < argc)
 	{
-		if(while_boucle(argv, &i, &arr, &j) == 0)
+		if (while_boucle(argv, &i, &arr, &j) == 0)
 			return (0);
 		i++;
 	}
-    return (arr);
+	return (arr);
 }
 
 int	check(char **argv)
@@ -115,7 +91,7 @@ int	check(char **argv)
 	{
 		if (ft_counter(argv[i], ' ') == 0 || ft_strlen(argv[i]) == 0)
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			exit(0);
 		}
 		i++;
@@ -130,14 +106,20 @@ int	check_all(int argc, char **argv)
 	check(argv);
 	if (nbr_of_arguments(argc, argv) == 1)
 	{
-		if (ft_atoi(argv[1]) > INT_MAX || ft_atoi(argv[1]) < INT_MIN)
-			ft_printf("Error\n");
+		if (ft_atoi(argv[1]) > INT_MAX || ft_atoi(argv[1]) < INT_MIN
+			|| !check_arguments(argc, argv))
+			write(2, "Error\n", 6);
 		exit(1);
 	}
 	arr = check_arguments(argc, argv);
+	if (!arr)
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
 	if (!arr || !check_duplicate(arr, argc, argv))
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		free(arr);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:47:46 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/23 23:41:14 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 15:44:30 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ int		ft_counter(char const *str, char c);
 long	ft_atoi(char *str);
 int		check_all(int argc, char **argv);
 ////
-//void	printstack(t_stack *stack);
+void	clean_stack(t_stack *stack);
 int		is_stack_sorted(t_stack *s, int element);
 void	fill_the_stack(int argc, char **argv, t_stack **stackA);
 int		ft_strcmp(char *s1, char *s2);
+void	free_tab(char **tab);
 
 #endif

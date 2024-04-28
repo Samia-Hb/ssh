@@ -6,35 +6,38 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:02:52 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/28 00:03:34 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 10:30:59 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*copied_stack(t_stack *stack_to_copy)//done
+t_stack	*copied_stack(t_stack *stack)
 {
-	t_stack	*copied;
-	t_stack	*temp;
-	int		i;
-	int		size;
+	t_stack	*copy;
+	t_stack	*current;
+	t_stack	*tail;
+	t_stack	*node;
 
-	temp = NULL;
-	copied = NULL;
-	i = 0;
-	size = ft_lstsize(stack_to_copy);
-	while (i < size)
+	copy = NULL;
+	current = stack;
+	tail = NULL;
+	while (current)
 	{
-		push(&temp, stack_to_copy -> data);
-		stack_to_copy = stack_to_copy->next;
-		i++;
+		node = malloc(sizeof(t_stack));
+		if (!node)
+			return (NULL);
+		node->data = current->data;
+		node->index = current->index;
+		node->next = NULL;
+		if (!copy)
+			copy = node;
+		else
+			tail->next = node;
+		tail = node;
+		current = current->next;
 	}
-	while (temp != NULL)
-	{
-		push(&copied, temp->data);
-		temp = temp->next;
-	}
-	return (copied);
+	return (copy);
 }
 
 int	find_closest_pos(t_stack *stackA, int element)//done
@@ -68,7 +71,7 @@ int	cal_mouvement_stacka(t_stack *stackA, int element, int k, int *move)
 {
 	t_stack	*copy_a;
 
-	copy_a = stackA;
+	copy_a = copied_stack(stackA);
 	if (k <= ft_lstsize(copy_a) / 2)
 	{
 		while (k != 0)
@@ -87,6 +90,7 @@ int	cal_mouvement_stacka(t_stack *stackA, int element, int k, int *move)
 			k = find_closest_pos(copy_a, element);
 		}
 	}
+	clean_stack(copy_a);
 	return (*move);
 }
 

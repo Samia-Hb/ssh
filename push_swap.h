@@ -6,7 +6,7 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:14:44 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/27 22:21:49 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 15:43:57 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	fill_the_stack(int argc, char **argv, t_stack **stackA);
 int		find_closest_pos(t_stack *stackA, int element);
 long	ft_atoi(char *str);
 
-int		calculate_min_element(t_stack *stackA, t_stack *stackB);
+int		calculate_min_element(t_stack *stackA, t_stack *stackB, int long nbr);
 int		calcule_mouvement_stackb(t_stack *stackB, t_stack *stackA, int ele);
 int		cal_mouvement_stacka(t_stack *stackA, int ele, int k, int *move);
 t_stack	*copied_stack(t_stack *stack_to_copy);
@@ -76,5 +76,6 @@ void	execute_print_move(t_stack **stackA, t_stack **stackB, char *str);
 int		nbr_of_arguments(int argc, char **argv);
 int		is_stack_sorted(t_stack *s, int element);
 void	clean_stack(t_stack *stack);
+void	free_tab(char **tab);
 
 #endif

@@ -6,23 +6,44 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:03:00 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/27 23:41:58 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 17:08:05 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	calculate_min_element(t_stack *stackA, t_stack *stackB)
+int	check_type(char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (j < ft_strlen(tab[i]))
+		{
+			if (tab[i][j] < 48 || tab[i][j] > 57)
+			{
+				if (tab[i][0] != '-' && tab[i][0] != '+')
+					return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	calculate_min_element(t_stack *stackA, t_stack *stackB, int long min_count)
 {
 	t_stack	*courant;
 	int		*count;
-	int		min_count;
 	int		i;
 	int		min_element;
 
 	i = 0;
 	min_element = INT_MAX;
-	min_count = INT_MAX;
 	courant = stackB;
 	count = malloc(ft_lstsize(stackB) * sizeof(int));
 	if (!count)
@@ -110,7 +131,7 @@ void	push_back_to_stacka(t_stack **stackA, t_stack **stackB)
 		}
 		else
 		{
-			min_element = calculate_min_element(*stackA,*stackB);
+			min_element = calculate_min_element(*stackA, *stackB, INT_MAX);
 			push_min_to_stacka(min_element, stackA, stackB);
 			close_pos = find_closest_pos(*stackA, min_element);
 			sort_stacka_before(stackA, close_pos, min_element);

@@ -6,7 +6,7 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:50:25 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/23 22:18:25 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 18:12:03 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	additional_case(char *str, int tmp, int i)
 {
-	if (str[i] != '\0' || tmp > 1
+	if ((str[i] != '\0' && str[i] < '0' && str[i] > '9') || tmp > 1
 		|| (tmp == 1 && ft_strlen(str) == 1))
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }
 
 void	skip_plus_moins(char *str, int *i, int *tmp, int *signe)
 {
-	if (str[*i] == '+' || str[*i] == '-')
+	while (str[*i] == '+' || str[*i] == '-')
 	{
 		if (str[*i] == '-')
 			*signe = -1;

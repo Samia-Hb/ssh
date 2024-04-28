@@ -6,7 +6,7 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:29:58 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/23 00:08:07 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:05:58 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_mov(t_stack **stack_a, t_stack **stack_b, char *str)
 		pb(stack_a, stack_b);
 	else
 	{
-		write(1, "Error..\n", 8);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }
@@ -60,10 +60,11 @@ void	check_input(char *str, t_stack **stack_a, t_stack **stack_b)
 {
 	if (str[0] == '\n')
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	check_mov(stack_a, stack_b, str);
+	free(str);
 }
 
 void	fill_the_stack(int argc, char **argv, t_stack **stackA)//done
@@ -101,11 +102,11 @@ int	main(int argc, char **argv)
 		if (str == NULL)
 			break ;
 		check_input(str, &stack_a, &stack_b);
-		free(str);
 	}
 	if (is_stack_sorted(stack_a, 0) && stack_b == NULL)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	clean_stack(stack_a);
 	return (0);
 }

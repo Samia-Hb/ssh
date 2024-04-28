@@ -6,12 +6,13 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:09:42 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/19 15:54:35 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:04:20 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_bonus.h"
 
-void	sa(t_stack *stackA)//it works
+void	sa(t_stack *stackA)
 {
 	int		tmp;
 	t_stack	*courant;
@@ -22,7 +23,7 @@ void	sa(t_stack *stackA)//it works
 	courant->data = tmp;
 }
 
-void	sb(t_stack *stackB)//it works
+void	sb(t_stack *stackB)
 {
 	int		tmp;
 	t_stack	*courant;
@@ -33,7 +34,7 @@ void	sb(t_stack *stackB)//it works
 	courant->data = tmp;
 }
 
-void	pa(t_stack **stackA, t_stack **stackB)//it works
+void	pa(t_stack **stackA, t_stack **stackB)
 {
 	t_stack	*courant;
 
@@ -45,7 +46,7 @@ void	pa(t_stack **stackA, t_stack **stackB)//it works
 	}
 }
 
-void	pb(t_stack **stackA, t_stack **stackB)//it works
+void	pb(t_stack **stackA, t_stack **stackB)
 {
 	t_stack	*courant;
 
@@ -57,7 +58,7 @@ void	pb(t_stack **stackA, t_stack **stackB)//it works
 	}
 }
 
-void	ra(t_stack **stackA)//it works
+void	ra(t_stack **stackA)
 {
 	t_stack	*last;
 

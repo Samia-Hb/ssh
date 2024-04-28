@@ -4,6 +4,7 @@ BONUS = checker
 NAME = push_swap
 
 SRCS = main.c \
+	clean.c	\
 	push_swap.c \
 	push_swap_utils.c \
 	push_back.c \
@@ -28,7 +29,7 @@ SRCS = main.c \
 SRCS_BONUS =	bonus/get_next_line/get_next_line.c bonus/get_next_line/get_next_line_utils.c \
        			bonus/checker.c bonus/check_arg.c bonus/push_swap_utils_bonus.c \
        			bonus/ft_split.c bonus/ft_atoi.c \
-       			bonus/movements_bonus_P2.c bonus/movements_bonus.c
+       			bonus/movements_bonus_P2.c bonus/movements_bonus.c bonus/check_type.c
 
 OBJS = $(SRCS:.c=.o)
 

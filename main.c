@@ -6,7 +6,7 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:02:49 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/28 00:16:50 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 16:56:47 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,6 @@ void	fill_the_stack(int argc, char **argv, t_stack **stackA)
 		size--;
 	}
 	free(arr);
-}
-void clean_stack(t_stack *stack)
-{
-	t_stack *tmp;
-
-	while (stack)
-	{
-		tmp = stack;
-		stack = stack->next;
-		free(tmp);
-	}
 }
 
 int	main(int argc, char **argv)

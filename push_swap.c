@@ -6,7 +6,7 @@
 /*   By: shebaz <shebaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:03:12 by shebaz            #+#    #+#             */
-/*   Updated: 2024/04/28 01:07:52 by shebaz           ###   ########.fr       */
+/*   Updated: 2024/04/28 10:25:30 by shebaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void	sort_copya(t_stack **copyA)
 		}
 		courant = courant->next;
 	}
-	//clean_stack(courant);
-	//clean_stack(courant1);
 }
 
 void	index_stack(t_stack *stackA)
@@ -95,11 +93,9 @@ void	index_stack(t_stack *stackA)
 	{
 		courant->index = i;
 		i++;
-		//free(courant);
 		courant = courant->next;
 	}
 	insert_index(copy_a, stackA);
-	//clean_stack(copy_a);
 }
 
 void	push_half_to_stackb(t_stack **stackA, t_stack **stackB)
@@ -108,7 +104,6 @@ void	push_half_to_stackb(t_stack **stackA, t_stack **stackB)
 	int	max;
 	int	half_size;
 
-	
 	i = 0;
 	max = ft_lstsize(*stackA);
 	half_size = ft_lstsize(*stackA) / 2;
@@ -121,8 +116,6 @@ void	push_half_to_stackb(t_stack **stackA, t_stack **stackB)
 			execute_print_move(stackA, stackB, "ra\n");
 		i++;
 	}
-	//push_to_stackb(stackA, stackB);
-	//push_back_to_stacka(stackA, stackB);
-	//free(stackA);
-	//free(stackB);
+	push_to_stackb(stackA, stackB);
+	push_back_to_stacka(stackA, stackB);
 }
